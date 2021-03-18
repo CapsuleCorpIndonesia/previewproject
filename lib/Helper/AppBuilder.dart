@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+
+class AppBuilder extends StatefulWidget {
+  final Function(BuildContext) builder;
+
+  const AppBuilder({Key key, this.builder}) : super(key: key);
+
+  @override
+  AppBuilderState createState() => new AppBuilderState();
+
+  static AppBuilderState of(BuildContext context) {
+    final AppBuilderState state = context.findAncestorStateOfType<AppBuilderState>();
+return state;
+    // return context.ancestorStateOfType(const TypeMatcher<AppBuilderState>());
+  }
+}
+
+class AppBuilderState extends State<AppBuilder> {
+  @override
+  Widget build(BuildContext context) {
+    return widget.builder(context);
+  }
+
+  void rebuild() {
+    setState(() {});
+  }
+}
